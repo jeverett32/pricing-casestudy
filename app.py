@@ -5,11 +5,10 @@ import numpy as np
 
 # --- Password Protection ---
 def check_password():
-    """Returns `True` if the user had the correct password."""
     def password_entered():
         if st.session_state["password"] == st.secrets["passwords"]["user1"]:
             st.session_state["password_correct"] = True
-            del st.session_state["password"]  # Don't store password.
+            del st.session_state["password"]
         else:
             st.session_state["password_correct"] = False
 
@@ -24,7 +23,7 @@ def check_password():
         return True
 
 if not check_password():
-    st.stop()  # Do not render the rest of the app if password is wrong
+    st.stop()
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -132,4 +131,5 @@ chart_data = pd.DataFrame({
 
 
 st.line_chart(chart_data)
+
 
